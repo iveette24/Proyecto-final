@@ -1,0 +1,14 @@
+{
+  "reportes": [
+    {
+      "id": "36a8"
+    },
+    {
+      "id": "b22e",
+      "descripción": "prueba manual",
+      "latitud": 0,
+      "longitud": 0,
+      "fecha": "2025-07-08T12:00:00Z"
+    }
+  ]
+}
