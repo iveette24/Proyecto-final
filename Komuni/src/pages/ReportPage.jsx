@@ -6,21 +6,16 @@ export default function ReportPage() {
   const [desc, setDesc] = useState('');
   const [extra, setExtra] = useState('');
   const [foto, setFoto] = useState(null);
-  const [msg, setMsg] = useState('');
   const [coords, setCoords] = useState(null);
+  const [msg, setMsg] = useState('');
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
-      position => {
-        setCoords({
-          latitud: position.coords.latitude,
-          longitud: position.coords.longitude
-        });
-      },
-      error => {
-        console.error('Error de geolocalización', error);
-        setCoords(null);
-      }
+      pos => setCoords({
+        latitud: pos.coords.latitude,
+        longitud: pos.coords.longitude
+      }),
+      err => console.error('No se pudo obtener ubicación:', err)
     );
   }, []);
 
@@ -39,23 +34,52 @@ export default function ReportPage() {
 
     try {
       await sendReporte(payload);
-      setMsg('✅ Reporte enviado');
+      setMsg('✅ Reporte enviado correctamente');
       setCalle('');
       setDesc('');
       setExtra('');
       setFoto(null);
     } catch (err) {
-      console.error(err);
-      setMsg('❌ Error al enviar');
+      console.error('Error al enviar reporte', err);
+      setMsg('❌ Ocurrió un error al enviar');
     }
   }
 
   return (
-    <section>
-      <h2>Reportar barrera</h2>
-      {msg && <p style={{ marginBottom: '1rem' }}>{msg}</p>}
+    <section style={{ padding: '1rem' }}>
+      <h2>Reportar barrera urbana</h2>
+      {msg && <p>{msg}</p>}
       <form onSubmit={handleSubmit}>
-        {/* campos similares al popup */}
+        <input
+          type="text"
+          placeholder="Calle"
+          value={calle}
+          onChange={e => setCalle(e.target.value)}
+          required
+        /><br />
+
+        <textarea
+          placeholder="Descripción"
+          value={desc}
+          onChange={e => setDesc(e.target.value)}
+          required
+          rows={2}
+        /><br />
+
+        <textarea
+          placeholder="Información extra"
+          value={extra}
+          onChange={e => setExtra(e.target.value)}
+          rows={1}
+        /><br />
+
+        <input
+          type="file"
+          accept="image/*"
+          onChange={e => setFoto(e.target.files[0])}
+        /><br />
+
+        <button type="submit" style={{ marginTop: '1rem' }}>Reportar</button>
       </form>
     </section>
   );

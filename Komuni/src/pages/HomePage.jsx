@@ -1,8 +1,21 @@
 export default function HomePage() {
   return (
-    <section>
+    <section style={{ padding: '1rem' }}>
       <h2>Bienvenida a Komuni</h2>
-      <p>Colabora con tu comunidad reportando barreras urbanas en el mapa y haz que tu entorno sea más accesible para todxs.</p>
+      <p>
+        Esta es una plataforma colaborativa para reportar barreras urbanas, mejorar la accesibilidad
+        y construir una comunidad más inclusiva.
+      </p>
+
+      <ul style={{ marginTop: '1rem' }}>
+        <li>🗺️ Accede al <strong>Mapa</strong> y añade reportes tocando sobre las calles</li>
+        <li>📚 Aprende sobre accesibilidad en la sección <strong>Educación</strong></li>
+        <li>🤝 Ayuda a otras personas compartiendo tu experiencia local</li>
+      </ul>
+
+      <p style={{ marginTop: '1rem', fontStyle: 'italic' }}>
+        Tu ciudad no es solo calles: es el reflejo de quién la habita.
+      </p>
     </section>
   );
 }

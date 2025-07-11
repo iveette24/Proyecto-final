@@ -1,0 +1,14 @@
+{
+  "reportes": [
+    {
+      "id": 1,
+      "calle": "Carrer Major",
+      "descripción": "Escalón sin rampa",
+      "informaciónExtra": "Difícil acceso con carrito",
+      "imagen": "foto1.jpg",
+      "latitud": 41.118,
+      "longitud": 1.245,
+      "fecha": "2025-07-10T15:22:45.123Z"
+    }
+  ]
+}

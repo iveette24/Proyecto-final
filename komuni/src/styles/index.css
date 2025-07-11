@@ -1,0 +1,31 @@
+:root {
+  --turquesa-medio: #2aa198;
+  --gris-suave: #f0f0f0;
+  --texto-principal: #333;
+  --fuente: 'Arial', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--fuente);
+  background-color: var(--gris-suave);
+  color: var(--texto-principal);
+}
+
+h1, h2 {
+  color: var(--turquesa-medio);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+section {
+  padding: 1rem;
+}

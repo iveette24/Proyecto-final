@@ -1,117 +1,130 @@
-import { useEffect, useRef, useState } from 'react';
-import L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
-import { sendReporte, getReportes } from '../services/api';
+import { useEffect, useRef, useState } from "react";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
+import { sendReporte, getReportes } from "../services/api";
 
-// Icono personalizado
-const customIcon = L.icon({
-  iconUrl: '/icons/barrier-icon.png', // Imagen ubicada en public/icons/
-  iconSize: [32, 32],
-  iconAnchor: [16, 32],
-  popupAnchor: [0, -30]
-});
+function getIconByDificultad(nivel) {
+  const color =
+    nivel === "alta" ? "red" :
+    nivel === "media" ? "orange" :
+    nivel === "baja" ? "green" :
+    "blue";
+
+  return L.icon({
+    iconUrl: `/icons/marker-${color}.png`,
+    iconSize: [32, 32],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -30],
+  });
+}
 
 export default function MapPage() {
   const mapRef = useRef(null);
+  const markersRef = useRef([]);        // Para mantener los markers actuales
   const [reportes, setReportes] = useState([]);
 
-  // Crear el mapa una sola vez
+  // 1) Montaje del mapa + click listener
   useEffect(() => {
-    if (!mapRef.current) {
-      mapRef.current = L.map('map').setView([41.1189, 1.2459], 13);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap contributors',
-      }).addTo(mapRef.current);
-    }
+    const map = L.map("map").setView([41.1189, 1.2459], 13);
+    mapRef.current = map;
 
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "&copy; OpenStreetMap contributors",
+    }).addTo(map);
+
+    // Carga inicial de reportes
     getReportes().then(res => setReportes(res.data));
+
+    // Al hacer click en el mapa, abrimos el formulario
+    map.on("click", onMapClick);
+
+    return () => {
+      map.off("click", onMapClick);
+      map.remove();
+    };
   }, []);
 
-  // Pintar marcadores existentes
+  // 2) Efecto para pintar “reportes” y actualizar marcadores
   useEffect(() => {
     if (!mapRef.current) return;
 
-    reportes.forEach(reporte => {
-      if (reporte.latitud && reporte.longitud) {
-        L.marker([reporte.latitud, reporte.longitud], { icon: customIcon })
-          .addTo(mapRef.current)
-          .bindPopup(`
-            <strong>${reporte.calle || 'Ubicación sin calle'}</strong><br/>
-            📝 ${reporte.descripción}<br/>
-            ${reporte.informaciónExtra ? '📌 ' + reporte.informaciónExtra : ''}
-          `);
-      }
+    // 2.1 Limpia marcadores previos
+    markersRef.current.forEach(m => mapRef.current.removeLayer(m));
+    markersRef.current = [];
+
+    // 2.2 Pinta los nuevos
+    reportes.forEach(rep => {
+      const icono = getIconByDificultad(rep.dificultad || "media");
+      const marker = L.marker([rep.latitud, rep.longitud], { icon: icono })
+        .addTo(mapRef.current)
+        .bindPopup(`
+          <strong>${rep.calle || "Ubicación sin calle"}</strong><br/>
+          📝 ${rep.descripción}<br/>
+          Nivel: ${rep.dificultad?.toUpperCase() || "MEDIA"}<br/>
+          ${rep.informaciónExtra ? "📌 " + rep.informaciónExtra : ""}
+        `);
+
+      markersRef.current.push(marker);
     });
   }, [reportes]);
 
-  // Escuchar clics en el mapa para crear nuevos reportes
-  useEffect(() => {
-    if (!mapRef.current) return;
+  // 3) Función callback del click
+  function onMapClick(e) {
+    const { lat, lng } = e.latlng;
+    const popupHTML = `
+      <form id="popup-form">
+        <input type="text" name="calle" placeholder="Calle" required /><br/>
+        <textarea name="descripción" placeholder="Descripción" required rows="2"></textarea><br/>
+        <textarea name="informaciónExtra" placeholder="Información extra" rows="1"></textarea><br/>
+        <select name="dificultad" required>
+          <option value="">Nivel de dificultad</option>
+          <option value="baja">🟢 Baja</option>
+          <option value="media">🟡 Media</option>
+          <option value="alta">🔴 Alta</option>
+        </select><br/>
+        <input type="file" name="imagen" accept="image/*" /><br/>
+        <button type="submit">Reportar</button>
+      </form>
+    `;
 
-    mapRef.current.on('click', e => {
-      const { lat, lng } = e.latlng;
+    const formPopup = L.popup()
+      .setLatLng([lat, lng])
+      .setContent(popupHTML)
+      .openOn(mapRef.current);
 
-      const formHtml = `
-        <form id="popup-form">
-          <input type="text" name="calle" placeholder="Calle" required /><br/>
-          <textarea name="descripción" placeholder="Descripción" required rows="2"></textarea><br/>
-          <textarea name="informaciónExtra" placeholder="Información extra" rows="1"></textarea><br/>
-          <input type="file" name="imagen" accept="image/*" /><br/>
-          <button type="submit">Reportar</button>
-        </form>
-      `;
+    setTimeout(() => {
+      const form = document.getElementById("popup-form");
+      form.onsubmit = async evt => {
+        evt.preventDefault();
 
-      const formPopup = L.popup()
-        .setLatLng([lat, lng])
-        .setContent(formHtml)
-        .openOn(mapRef.current);
+        const nuevoReporte = {
+          calle: form.calle.value,
+          descripción: form.descripción.value,
+          informaciónExtra: form.informaciónExtra.value,
+          dificultad: form.dificultad.value,
+          imagen: form.imagen.files[0]?.name || null,
+          latitud: lat,
+          longitud: lng,
+          fecha: new Date().toISOString(),
+        };
 
-      setTimeout(() => {
-        const form = document.getElementById('popup-form');
-        if (form) {
-          form.onsubmit = async evt => {
-            evt.preventDefault();
-            const calle = form.calle.value;
-            const descripción = form.descripción.value;
-            const informaciónExtra = form.informaciónExtra.value;
-            const imagenFile = form.imagen.files[0];
-            const imagenNombre = imagenFile ? imagenFile.name : null;
-
-            const nuevoReporte = {
-              calle,
-              descripción,
-              informaciónExtra,
-              imagen: imagenNombre,
-              latitud: lat,
-              longitud: lng,
-              fecha: new Date().toISOString()
-            };
-
-            await sendReporte(nuevoReporte);
-
-            L.marker([lat, lng], { icon: customIcon })
-              .addTo(mapRef.current)
-              .bindPopup(`
-                <strong>${calle}</strong><br/>
-                📝 ${descripción}<br/>
-                ${informaciónExtra ? '📌 ' + informaciónExtra : ''}
-              `)
-              .openPopup();
-
-            mapRef.current.closePopup();
-          };
+        console.log("POST /reportes:", nuevoReporte);
+        try {
+          await sendReporte(nuevoReporte);
+          setReportes(prev => [...prev, nuevoReporte]);
+          formPopup.remove();  // cierra el popup
+        } catch (err) {
+          console.error("Error al guardar reporte:", err);
+          alert("❌ No se pudo guardar el reporte.");
         }
-      }, 100);
-    });
-  }, []);
+      };
+    }, 100);
+  }
 
   return (
     <section>
       <h2>Mapa de accesibilidad</h2>
-      <div
-        id="map"
-        style={{ height: '60vh', borderRadius: '8px', marginTop: '1rem' }}
-      />
+      <div id="map" style={{ height: "60vh", marginTop: "1rem" }} />
     </section>
   );
 }

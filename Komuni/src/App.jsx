@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import HomePage from './pages/HomePage';
 import MapPage from './pages/MapPage';
-import ReportPage from './pages/ReportPage';
 import EduPage from './pages/EduPage';
 
 function App() {
@@ -13,7 +12,6 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/mapa" element={<MapPage />} />
-          <Route path="/reporte" element={<ReportPage />} />
           <Route path="/educacion" element={<EduPage />} />
         </Routes>
       </main>

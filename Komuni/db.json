@@ -1,7 +1,7 @@
 {
   "reportes": [
     {
-      "id": 1,
+      "id": "1",
       "calle": "Carrer Major",
       "descripción": "Escalón sin rampa",
       "informaciónExtra": "Difícil acceso con carrito",
@@ -9,6 +9,116 @@
       "latitud": 41.118,
       "longitud": 1.245,
       "fecha": "2025-07-10T15:22:45.123Z"
+    },
+    {
+      "id": "0363",
+      "calle": "earrfer",
+      "descripción": "argtaerg",
+      "informaciónExtra": "agtaergt",
+      "dificultad": "alta",
+      "imagen": null,
+      "latitud": 41.12035490016625,
+      "longitud": 1.2518835067749026,
+      "fecha": "2025-07-11T10:05:37.446Z"
+    },
+    {
+      "id": "d310",
+      "calle": "awzergtaetgeartaert",
+      "descripción": "aer3taetaert",
+      "informaciónExtra": "",
+      "dificultad": "alta",
+      "imagen": null,
+      "latitud": 41.1188651968098,
+      "longitud": 1.2514543533325198,
+      "fecha": "2025-07-11T10:06:47.289Z"
+    },
+    {
+      "id": "56de",
+      "calle": "WEFwef",
+      "descripción": "Ferfaer",
+      "informaciónExtra": "",
+      "dificultad": "media",
+      "imagen": null,
+      "latitud": 41.12148489320996,
+      "longitud": 1.2482357025146487,
+      "fecha": "2025-07-11T10:06:55.007Z"
+    },
+    {
+      "id": "220c",
+      "calle": "aefaew4fawef",
+      "descripción": "aefaefa",
+      "informaciónExtra": "",
+      "dificultad": "baja",
+      "imagen": null,
+      "latitud": 41.12248786678186,
+      "longitud": 1.24445915222168,
+      "fecha": "2025-07-11T10:07:02.554Z"
+    },
+    {
+      "id": "1dd2",
+      "calle": "a4etaet5a",
+      "descripción": "agetrtaewtfrewt",
+      "informaciónExtra": "",
+      "dificultad": "media",
+      "imagen": null,
+      "latitud": 41.355000377011955,
+      "longitud": 1.6891479492187502,
+      "fecha": "2025-07-11T10:13:15.969Z"
+    },
+    {
+      "id": "78c1",
+      "calle": "ERGAERTGAE",
+      "descripción": "ARGAERGTAT",
+      "informaciónExtra": "agaer5taer",
+      "dificultad": "alta",
+      "imagen": null,
+      "latitud": 41.3448129253467,
+      "longitud": 1.7241668701171877,
+      "fecha": "2025-07-11T10:13:32.802Z"
+    },
+    {
+      "id": "f767",
+      "calle": "faerfa",
+      "descripción": "aerfaerf4",
+      "informaciónExtra": "",
+      "dificultad": "baja",
+      "imagen": null,
+      "latitud": 41.22052210460194,
+      "longitud": 1.530624032020569,
+      "fecha": "2025-07-11T10:15:25.194Z"
+    },
+    {
+      "id": "5d95",
+      "calle": "Carrer A",
+      "descripción": "falta de rampa",
+      "informaciónExtra": "faiehfaie",
+      "dificultad": "baja",
+      "imagen": null,
+      "latitud": 41.12065578578253,
+      "longitud": 1.2248682975769045,
+      "fecha": "2025-07-11T10:21:47.494Z"
+    },
+    {
+      "id": "4577",
+      "calle": "efaerf",
+      "descripción": "arfar",
+      "informaciónExtra": "afre",
+      "dificultad": "media",
+      "imagen": "Captura de pantalla 2025-07-11 105750.png",
+      "latitud": 41.12094309289278,
+      "longitud": 1.2256675958633423,
+      "fecha": "2025-07-11T10:22:04.208Z"
+    },
+    {
+      "id": "e369",
+      "calle": "hola",
+      "descripción": "soy el bola",
+      "informaciónExtra": "",
+      "dificultad": "alta",
+      "imagen": null,
+      "latitud": 55.44777190095713,
+      "longitud": 11.799831390380861,
+      "fecha": "2025-07-11T10:27:56.289Z"
     }
   ]
 }

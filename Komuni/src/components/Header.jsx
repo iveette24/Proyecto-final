@@ -1,33 +1,32 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 export default function Header() {
   return (
     <header
       style={{
-        background: "var(--turquesa-medio)",
-        color: "white",
-        padding: "1rem",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
+        background: 'var(--turquesa-medio)',
+        color: '#fff',
+        padding: '1rem',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexWrap: 'wrap'
       }}
     >
-      <h1 style={{ margin: 0 }}>Komuni</h1>
-      
+      <h1 style={{ margin: 0, fontSize: '1.5rem' }}>Komuni</h1>
+
       <nav>
-        <Link to="/" style={{ marginRight: "1rem", color: "white" }}>
-          Inicio
-        </Link>
-        <Link to="/mapa" style={{ marginRight: "1rem", color: "white" }}>
-          Mapa
-        </Link>
-        <Link to="/reporte" style={{ marginRight: "1rem", color: "white" }}>
-          Reporte
-        </Link>
-        <Link to="/educacion" style={{ color: "white" }}>
-          Educación
-        </Link>
+        <Link to="/" style={linkStyle}>Inicio</Link>
+        <Link to="/mapa" style={linkStyle}>Mapa</Link>
+        <Link to="/educacion" style={linkStyle}>Educación</Link>
       </nav>
     </header>
   );
 }
+
+const linkStyle = {
+  marginRight: '1rem',
+  color: '#fff',
+  fontWeight: 'bold',
+  textDecoration: 'none'
+};
