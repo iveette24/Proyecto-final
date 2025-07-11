@@ -7,3 +7,7 @@ const API = axios.create({
 export function sendReporte(data) {
   return API.post('/reportes', data);
 }
+
+export function getReportes() {
+  return API.get('/reportes');
+}

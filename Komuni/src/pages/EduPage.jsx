@@ -1,11 +1,8 @@
 export default function EduPage() {
   return (
     <section>
-      <h2>Accesibilidad y ODS</h2>
-      <p>
-        Alineado con el ODS 11 para ciudades inclusivas. Estas mejoras
-        benefician a toda la comunidad.
-      </p>
+      <h2>Educación accesible</h2>
+      <p>Aquí encontrarás recursos sobre accesibilidad urbana, derechos de movilidad, y cómo mejorar nuestros espacios públicos.</p>
     </section>
   );
 }

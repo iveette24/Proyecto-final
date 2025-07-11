@@ -5,11 +5,11 @@ import MapPage from './pages/MapPage';
 import ReportPage from './pages/ReportPage';
 import EduPage from './pages/EduPage';
 
-export default function App() {
+function App() {
   return (
     <BrowserRouter>
       <Header />
-      <main className="container">
+      <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/mapa" element={<MapPage />} />
@@ -20,3 +20,5 @@ export default function App() {
     </BrowserRouter>
   );
 }
+
+export default App;

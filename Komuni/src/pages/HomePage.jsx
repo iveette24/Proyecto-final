@@ -1,8 +1,8 @@
 export default function HomePage() {
   return (
     <section>
-      <h1>Bienvenid@ a Komuni</h1>
-      <p>Comparte y consulta barreras urbanas en Tarragona.</p>
+      <h2>Bienvenida a Komuni</h2>
+      <p>Colabora con tu comunidad reportando barreras urbanas en el mapa y haz que tu entorno sea más accesible para todxs.</p>
     </section>
   );
 }
