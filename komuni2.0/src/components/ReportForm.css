@@ -1,0 +1,52 @@
+.report-form {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #fefefe;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.report-form h2 {
+  text-align: center;
+  color: #333;
+}
+
+.report-form label {
+  display: block;
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+.report-form input[type="text"],
+.report-form input[type="file"],
+.report-form textarea {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.report-form textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.report-form button {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.report-form button:hover {
+  background-color: #005fa3;
+}
