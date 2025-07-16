@@ -20,12 +20,12 @@ function Footer() {
               </a>
             </li>
           </ul>
-          <p className="rk-footer__text rk-footer__copy ">
+          {/* <p className="rk-footer__text rk-footer__copy ">
             {" "}
             <span className="ae-u-bold">© </span>
             <span className="ae-u-bolder">2015 URKU PORTFOLIO </span>All Right
             Reserved.
-          </p>
+          </p> */}
         </div>
         <div className="ae-grid__item item-lg-4 au-xs-ta-center">
           <a href="#0" className="rk-social-btn ">
@@ -61,10 +61,11 @@ function Footer() {
             </span>
           </p>
           <p className="rk-footer__text rk-footer__by">
-            Theme by{" "}
-            <a href="http://pixeden.com" className="ae-u-bolder">
-              Pixeden.
-            </a>
+        {" "}
+        <small>
+          &copy; {new Date().getFullYear()} Komuni. Plataforma colaborativa de
+          accesibilidad.
+        </small>
           </p>
         </div>
       </div>

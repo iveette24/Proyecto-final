@@ -2168,5 +2168,22 @@ body {
 }
 
 .rk-light-color {
-  color: #787878;
+  color: grey;
+}
+.rk-header {
+  background: #2aa198 !important;
+  color: #fff;
+  padding: 2rem 0 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);}
+
+  .rk-menu__link:hover,
+.rk-footer-menu .rk-menu__link:hover {
+  color: #ff9800; /* Example: orange highlight */
+  text-decoration: underline; /* Optional: underline on hover */
+  transition: color 0.2s;
 }
