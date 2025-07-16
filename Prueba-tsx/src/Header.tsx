@@ -31,7 +31,7 @@ function Header() {
               </li>
               <li className="rk-menu__item">
                 <Link to="/about" className="rk-menu__link">
-                  Portfolio
+                  Sobre nosotros
                 </Link>
               </li>
               <li className="rk-menu__item">
