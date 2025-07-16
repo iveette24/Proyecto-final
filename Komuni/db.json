@@ -5,11 +5,12 @@
       "calle": "Carrer de les Roquetes",
       "descripción": "Casa Marc, Nº14 ESC A-1,2",
       "informaciónExtra": "Casa Marc",
-      "dificultad": "alta",
+      "dificultad": "baja",
       "imagen": "Captura de pantalla 2025-07-15 100550.png",
       "latitud": 41.220077334772036,
       "longitud": 1.5311953425407412,
-      "fecha": "2025-07-15T11:43:54.138Z"
+      "fecha": "2025-07-15T11:43:54.138Z",
+      "tipo": "escalera"
     },
     {
       "id": "184d",
@@ -46,6 +47,21 @@
       "latitud": 41.115647028175516,
       "longitud": 1.2413692474365237,
       "fecha": "2025-07-16T08:26:10.706Z"
+    },
+    {
+      "id": "ab52",
+      "calle": "Carrer Sant Miquel",
+      "descripción": "En el portal 20",
+      "informaciónExtra": "",
+      "tipo": "señal",
+      "dificultad": "media",
+      "imagen": null,
+      "latitud": 41.11169928753307,
+      "longitud": 1.2502714991569521,
+      "fecha": "2025-07-16T08:41:41.644Z",
+      "comentarios": [
+        "Una polla"
+      ]
     }
   ]
 }
