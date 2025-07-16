@@ -1,12 +1,51 @@
-# React + Vite
+# Komuni 2.0
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Komuni 2.0 es una plataforma colaborativa para reportar barreras urbanas, mejorar la accesibilidad y construir una comunidad más inclusiva.
 
-Currently, two official plugins are available:
+## Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🗺️ Reporta incidencias urbanas con foto, descripción y ubicación.
+- 🔒 Autenticación segura con Google.
+- 📋 Visualiza reportes recientes de la comunidad.
+- ☁️ Almacenamiento en Firebase (Firestore y Storage).
 
-## Expanding the ESLint configuration
+## Instalación
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/tuusuario/komuni2.0.git
+   cd komuni2.0
+   ```
+
+2. Instala las dependencias:
+   ```bash
+   npm install
+   ```
+
+3. Configura Firebase en `src/firebase.js` si es necesario.
+
+4. Inicia la aplicación:
+   ```bash
+   npm run dev
+   ```
+
+Accede a [http://localhost:5173](http://localhost:5173) en tu navegador.
+
+## Estructura del proyecto
+
+- `/src/components` — Componentes principales (formulario, lista de reportes)
+- `/src` — Lógica de autenticación y configuración de Firebase
+
+## Tecnologías
+
+- React 19
+- Vite
+- Firebase (Auth, Firestore, Storage)
+
+## Contribuir
+
+¡Las contribuciones son bienvenidas! Por favor, abre un issue o pull request.
+
+## Licencia
+
+MIT

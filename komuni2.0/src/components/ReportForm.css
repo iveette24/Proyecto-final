@@ -10,13 +10,14 @@
 
 .report-form h2 {
   text-align: center;
-  color: #333;
+  color: #2aa198;
 }
 
 .report-form label {
   display: block;
   margin-bottom: 1rem;
-  color: #555;
+  color: #444;
+  font-weight: 500;
 }
 
 .report-form input[type="text"],
@@ -25,9 +26,10 @@
   width: 100%;
   padding: 0.6rem;
   margin-top: 0.3rem;
-  border: 1px solid #ccc;
+  border: 1px solid #bbb;
   border-radius: 8px;
   font-size: 1rem;
+  background: #f8f8f8;
 }
 
 .report-form textarea {
@@ -38,15 +40,22 @@
 .report-form button {
   width: 100%;
   padding: 0.8rem;
-  background-color: #0077cc;
+  background-color: #2aa198;
   color: white;
   border: none;
   border-radius: 10px;
   font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
 .report-form button:hover {
-  background-color: #005fa3;
+  background-color: #20706e;
+}
+
+@media (max-width: 600px) {
+  .report-form {
+    padding: 1rem;
+  }
 }

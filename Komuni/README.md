@@ -1,12 +1,58 @@
-# React + Vite
+# Komuni
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Komuni es una plataforma colaborativa para reportar barreras urbanas, mejorar la accesibilidad y construir una comunidad más inclusiva.
 
-Currently, two official plugins are available:
+## Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🗺️ Mapa interactivo para visualizar y añadir reportes de barreras urbanas.
+- 📚 Sección educativa con recursos sobre accesibilidad.
+- 🤝 Enfoque comunitario y participativo.
 
-## Expanding the ESLint configuration
+## Instalación
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Clona el repositorio:
+   ```
+   git clone https://github.com/tuusuario/komuni.git
+   cd komuni
+   ```
+
+2. Instala las dependencias:
+   ```
+   npm install
+   ```
+
+3. Inicia la API local (JSON Server):
+   ```
+   npm run api
+   ```
+
+4. Inicia la aplicación:
+   ```
+   npm run dev
+   ```
+
+Accede a [http://localhost:5173](http://localhost:5173) en tu navegador.
+
+## Estructura del proyecto
+
+- `/src/pages` — Páginas principales (Inicio, Mapa, Educación)
+- `/src/components` — Componentes reutilizables
+- `/src/services` — Lógica de conexión con la API
+- `/src/styles` — Estilos globales
+
+## Tecnologías
+
+- React 19
+- Vite
+- Leaflet
+- Axios
+- React Router DOM
+- JSON Server
+
+## Contribuir
+
+¡Las contribuciones son bienvenidas! Por favor, abre un issue o pull request.
+
+## Licencia
+
+MIT

@@ -1,20 +1,29 @@
 export default function EduPage() {
   return (
     <section style={{ padding: '1rem' }}>
-      <h2>Educación sobre accesibilidad</h2>
-      <p>
-        La accesibilidad urbana no es solo una cuestión técnica, sino también social. En esta sección encontrarás
-        recursos útiles para aprender, reflexionar y compartir conocimientos sobre barreras físicas, movilidad reducida
-        y el derecho a moverse con autonomía.
-      </p>
+      <h1>Educación sobre accesibilidad</h1>
+      <div style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '2rem',
+        marginBottom: '2.5rem',
+        justifyContent: 'center'
+      }}>
+        <div className="card" style={{ minWidth: 260, flex: 1 }}>
+          <h2>📖 Barreras urbanas</h2>
+          <p>¿Qué son y cómo afectan a distintas personas? Aprende a identificarlas y reportarlas.</p>
+        </div>
+        <div className="card" style={{ minWidth: 260, flex: 1 }}>
+          <h2>🚶‍♀️ Experiencias reales</h2>
+          <p>Historias y testimonios sobre accesibilidad ciudadana y superación de barreras.</p>
+        </div>
+        <div className="card" style={{ minWidth: 260, flex: 1 }}>
+          <h2>🧠 Buenas prácticas</h2>
+          <p>Descubre cómo el diseño inclusivo mejora la vida de todos.</p>
+        </div>
+      </div>
 
-      <ul style={{ marginTop: '1rem' }}>
-        <li>📖 Qué son las barreras urbanas y cómo afectan a distintas personas</li>
-        <li>🚶‍♀️ Historias y experiencias de accesibilidad ciudadana</li>
-        <li>🧠 Buenas prácticas urbanas y diseño inclusivo</li>
-      </ul>
-
-      <p style={{ marginTop: '1rem', fontStyle: 'italic' }}>
+      <p style={{ marginTop: '2rem', fontStyle: 'italic', color: '#888', textAlign: 'center' }}>
         La accesibilidad empieza cuando entendemos que no todas las personas recorren la ciudad igual.
       </p>
     </section>

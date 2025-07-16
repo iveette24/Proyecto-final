@@ -10,16 +10,25 @@ const ReportForm = () => {
   const [description, setDescription] = useState('');
   const [location, setLocation] = useState('');
   const [loading, setLoading] = useState(false);
+  const [msg, setMsg] = useState('');
+  const [error, setError] = useState('');
 
   const auth = getAuth();
   const user = auth.currentUser;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setMsg('');
+    setError('');
     setLoading(true);
 
     if (!user) {
-      alert('Debes iniciar sesión para enviar un reporte.');
+      setError('Debes iniciar sesión para enviar un reporte.');
+      setLoading(false);
+      return;
+    }
+    if (!description.trim() || !location.trim()) {
+      setError('Todos los campos son obligatorios.');
       setLoading(false);
       return;
     }
@@ -33,8 +42,8 @@ const ReportForm = () => {
       }
 
       await addDoc(collection(db, 'reportes'), {
-        description,
-        location,
+        description: description.trim(),
+        location: location.trim(),
         imageUrl,
         userName: user.displayName,
         userEmail: user.email,
@@ -42,25 +51,39 @@ const ReportForm = () => {
         createdAt: Timestamp.now(),
       });
 
-      alert('Reporte enviado correctamente ✅');
+      setMsg('Reporte enviado correctamente ✅');
       setImage(null);
       setDescription('');
       setLocation('');
     } catch (err) {
-      console.error('Error al guardar el reporte:', err);
-      alert('Hubo un error. Intenta de nuevo.');
+      setError('Hubo un error. Intenta de nuevo.');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <form className="report-form" onSubmit={handleSubmit}>
+    <form
+      className="report-form"
+      onSubmit={handleSubmit}
+      aria-label="Formulario de reporte"
+    >
       <h2>Reportar Incidencia</h2>
+
+      {msg && (
+        <div style={{ color: 'green', marginBottom: 8 }}>{msg}</div>
+      )}
+      {error && (
+        <div style={{ color: 'crimson', marginBottom: 8 }}>{error}</div>
+      )}
 
       <label>
         Foto del problema:
-        <input type="file" onChange={(e) => setImage(e.target.files[0])} />
+        <input
+          type="file"
+          onChange={(e) => setImage(e.target.files[0])}
+          accept="image/*"
+        />
       </label>
 
       <label>
@@ -69,6 +92,9 @@ const ReportForm = () => {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           required
+          minLength={10}
+          maxLength={300}
+          placeholder="Describe el problema (mínimo 10 caracteres)"
         />
       </label>
 
@@ -79,6 +105,9 @@ const ReportForm = () => {
           value={location}
           onChange={(e) => setLocation(e.target.value)}
           required
+          minLength={3}
+          maxLength={100}
+          placeholder="Ej: Calle Mayor 123, Tarragona"
         />
       </label>
 
