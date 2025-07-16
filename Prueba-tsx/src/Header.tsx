@@ -1,5 +1,5 @@
-import { Link } from "react-router";
-
+import { Link, NavLink } from "react-router-dom";
+import type { NavLinkProps } from "react-router-dom";
 Object.values(import.meta.glob("./assets/css/*", { eager: true }));
 
 function Header() {
@@ -24,30 +24,30 @@ function Header() {
           </h1>
           <nav className="rk-navigation">
             <ul className="rk-menu">
-              <li className="active rk-menu__item">
-                <Link to="/" className="rk-menu__link">
+              <li className="rk-menu__item">
+                <NavLink to="/"  end className={({ isActive }: { isActive: boolean }) => "rk-menu__link" + (isActive ? " active" : "")}>
                   Home
-                </Link>
+                </NavLink>
               </li>
               <li className="rk-menu__item">
-                <Link to="/about" className="rk-menu__link">
+                <NavLink to="/about" className={({ isActive }: { isActive: boolean }) => "rk-menu__link" + (isActive ? " active" : "")}>
                   Sobre nosotros
-                </Link>
+                </NavLink>
               </li>
               <li className="rk-menu__item">
-                <Link to="/" className="rk-menu__link">
-                  Blog
-                </Link>
+                <NavLink to="/mapa" className={({ isActive }: { isActive: boolean }) => "rk-menu__link" + (isActive ? " active" : "")}>
+                  Mapa
+                </NavLink>
               </li>
               <li className="rk-menu__item">
-                <Link to="/" className="rk-menu__link">
-                  Pages
-                </Link>
+                <NavLink to="/foro" className={({ isActive }: { isActive: boolean }) => "rk-menu__link" + (isActive ? " active" : "")}>
+                  Foro
+                </NavLink>
               </li>
               <li className="rk-menu__item">
-                <Link to="/" className="rk-menu__link">
-                  Contact Us
-                </Link>
+                <NavLink to="/contacto" className={({ isActive }: { isActive: boolean }) => "rk-menu__link" + (isActive ? " active" : "")}>
+                  Contacto
+                </NavLink>
               </li>
             </ul>
           </nav>

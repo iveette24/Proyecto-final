@@ -1984,6 +1984,10 @@ body {
 .rk-menu__link {
   padding-bottom: 4.2rem;
 }
+.rk-menu__link.active {
+  color:#ff9800;
+  font-weight: bold;
+}
 .rk-menu__sub {
   background-color: white;
   left: 0;
