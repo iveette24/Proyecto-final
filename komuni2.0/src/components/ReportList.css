@@ -2,13 +2,22 @@
   margin-top: 2rem;
 }
 
+.report-list h2 {
+  color: #2aa198;
+  margin-bottom: 1.5rem;
+}
+
 .reporte-card {
   border: 1px solid #ddd;
   border-radius: 12px;
   padding: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   background-color: #fafafa;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  text-align: left;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .reporte-card img {
@@ -16,9 +25,24 @@
   height: auto;
   margin-bottom: 0.5rem;
   border-radius: 8px;
+  display: block;
 }
 
 .reporte-card .email {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: #666;
+  margin-bottom: 0.2rem;
+}
+
+.reporte-card .fecha {
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: 0.2rem;
+}
+
+@media (max-width: 600px) {
+  .reporte-card {
+    padding: 0.7rem;
+    font-size: 0.97rem;
+  }
 }

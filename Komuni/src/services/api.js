@@ -11,3 +11,12 @@ export function sendReporte(data) {
 export function getReportes() {
   return API.get('/reportes');
 }
+
+// Nuevo: editar y borrar
+export function updateReporte(id, data) {
+  return API.patch(`/reportes/${id}`, data);
+}
+
+export function deleteReporte(id) {
+  return API.delete(`/reportes/${id}`);
+}

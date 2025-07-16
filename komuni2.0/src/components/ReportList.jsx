@@ -3,6 +3,16 @@ import { db } from '../firebase';
 import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import './ReportList.css';
 
+function formatDate(ts) {
+  if (!ts) return '';
+  try {
+    const date = ts.toDate ? ts.toDate() : new Date(ts.seconds * 1000);
+    return date.toLocaleString('es-ES', { dateStyle: 'medium', timeStyle: 'short' });
+  } catch {
+    return '';
+  }
+}
+
 const ReportList = () => {
   const [reportes, setReportes] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -15,7 +25,7 @@ const ReportList = () => {
         const datos = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         setReportes(datos);
       } catch (err) {
-        console.error('Error al cargar reportes:', err);
+        setReportes([]);
       } finally {
         setLoading(false);
       }
@@ -24,7 +34,7 @@ const ReportList = () => {
     cargarReportes();
   }, []);
 
-  if (loading) return <p>Cargando reportes...</p>;
+  if (loading) return <p style={{ color: '#888' }}>Cargando reportes...</p>;
 
   if (reportes.length === 0) return <p>No hay reportes aún.</p>;
 
@@ -37,7 +47,12 @@ const ReportList = () => {
           <p><strong>Ubicación:</strong> {reporte.location}</p>
           <p><strong>Descripción:</strong> {reporte.description}</p>
           <p><strong>Reportado por:</strong> {reporte.userName || 'Anónimo'}</p>
-          <p className="email">{reporte.userEmail}</p>
+          {reporte.userEmail && <p className="email">{reporte.userEmail}</p>}
+          {reporte.createdAt && (
+            <p className="fecha">
+              <span role="img" aria-label="fecha">🕒</span> {formatDate(reporte.createdAt)}
+            </p>
+          )}
         </div>
       ))}
     </div>
