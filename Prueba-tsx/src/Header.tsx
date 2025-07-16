@@ -1,4 +1,6 @@
-Object.values(import.meta.glob('./assets/css/*', { eager: true }));
+import { Link } from "react-router";
+
+Object.values(import.meta.glob("./assets/css/*", { eager: true }));
 
 function Header() {
   return (
@@ -18,36 +20,34 @@ function Header() {
         </label>
         <div className="ae-container-fluid rk-topbar">
           <h1 className="rk-logo">
-            <a href="index.html">
-              KOMUNI
-            </a>
+            <Link to="/">KOMUNI</Link>
           </h1>
           <nav className="rk-navigation">
             <ul className="rk-menu">
               <li className="active rk-menu__item">
-                <a href="index.html" className="rk-menu__link">
+                <Link to="/" className="rk-menu__link">
                   Home
-                </a>
+                </Link>
               </li>
               <li className="rk-menu__item">
-                <a href="portfolio.html" className="rk-menu__link">
+                <Link to="/about" className="rk-menu__link">
                   Portfolio
-                </a>
+                </Link>
               </li>
               <li className="rk-menu__item">
-                <a href="blog.html" className="rk-menu__link">
+                <Link to="/" className="rk-menu__link">
                   Blog
-                </a>
+                </Link>
               </li>
               <li className="rk-menu__item">
-                <a href="#0" className="rk-menu__link">
+                <Link to="/" className="rk-menu__link">
                   Pages
-                </a>
+                </Link>
               </li>
               <li className="rk-menu__item">
-                <a href="contact.html" className="rk-menu__link">
+                <Link to="/" className="rk-menu__link">
                   Contact Us
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
