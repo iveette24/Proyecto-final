@@ -68,7 +68,7 @@ function Header() {
                     "menu_link" + (isActive ? " active" : "")
                   }
                 >
-                  Foro
+                  ???
                 </NavLink>
               </li>
               <li className="menu_item">
