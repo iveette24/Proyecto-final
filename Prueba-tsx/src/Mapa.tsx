@@ -90,7 +90,7 @@ async function getStreetName(lat: number, lng: number): Promise<string> {
   }
 }
 
-export default function MapPage() {
+export default function Mapa() {
   const mapRef = useRef<Map | null>(null);
   const markersRef = useRef<Marker[]>([]);
   const [reportes, setReportes] = useState<Reporte[]>([]);
@@ -275,8 +275,7 @@ export default function MapPage() {
 reportes.forEach(rep => {
   if (!rep.latitud || !rep.longitud) return;
 
-  // Asegúrate de que mapRef.current no es null antes de intentar añadir el marcador
-  if (mapRef.current) { // <-- Añade esta verificación
+  if (mapRef.current) { 
     const icono = getIconByDificultad(rep.dificultad || "media");
     const emoji = getEmojiByDificultad(rep.dificultad || "media");
     const incidenciaEmoji = getIncidenciaEmoji(rep.descripción || "");
@@ -327,7 +326,7 @@ reportes.forEach(rep => {
     `;
 
     const marker = L.marker([rep.latitud, rep.longitud], { icon: icono })
-      .addTo(mapRef.current) // Aquí mapRef.current ya no será null gracias al 'if'
+      .addTo(mapRef.current) 
       .bindPopup(popupHtml, { maxWidth: 400, minWidth: 140, closeButton: false } as L.PopupOptions);
 
     marker.on("popupopen", () => {
@@ -368,7 +367,7 @@ reportes.forEach(rep => {
     });
 
     markersRef.current.push(marker);
-  } // <-- Cierre de la verificación
+  }
 });
   }, [reportes, updateReporte, deleteReporte, openEditSidebar]);
 
@@ -513,7 +512,8 @@ reportes.forEach(rep => {
 
   return (
     <section>
-      <h2>Mapa de accesibilidad</h2>
+      <div className="textalign">
+      <h1>Mapa de accesibilidad</h1>
       <div
         className="card"
         style={{
@@ -525,7 +525,7 @@ reportes.forEach(rep => {
           color: "#20706e"
         }}
       >
-        <strong>Guía de usuario:</strong>
+        <strong >Guía de usuario:</strong>
         <ul style={{ margin: "0.7em 0 0 1.2em", padding: 0 }}>
           <li>🔍 Usa el buscador para localizar una dirección o ciudad.</li>
           <li>📍 Pulsa "Mi ubicación" para centrar el mapa donde estás.</li>
@@ -570,7 +570,7 @@ reportes.forEach(rep => {
           📍 Mi ubicación
         </button>
       </div>
-      {loading && <p style={{ color: '#888' }}>Cargando reportes...</p>}
+      {loading && <p style={{ color: '#888' }}>Cargando reportes...</p>}</div>
       <div style={{ position: "relative" }}>
         <div id="map" style={{ height: "60vh", borderRadius: 10, overflow: "hidden" }} aria-label="Mapa de reportes" />
         {sidebar.open && <ReportSidebar />}

@@ -1,77 +1,96 @@
 import useEquipo from "./UseEquipo";
 
-
-
-// const team = [
-//   {
-//     name: "David",
-//     img: "src/assets/img/pato2.jpg", // Pon la ruta correcta de la imagen
-//     desc: "Frontend developer passionate about UI/UX and accessibility.",
-//   },
-//   {
-//     name: "Ivette",
-//     img: "src/assets/img/pato2.jpg",
-//     desc: "Backend specialist focused on scalable and secure APIs.",
-//   },
-//   {
-//     name: "Marc",
-//     img: "src/assets/img/pato2.jpg",
-//     desc: "Fullstack developer and DevOps enthusiast.",
-//   },
-// ];
-
-const About = () => (
-  <div style={{ padding: "2rem" }}>
-    <h2>Sobre nuestro equipo</h2>
-    <div
-      style={{
-        display: "flex",
-        gap: "2rem",
-        flexWrap: "wrap",
-        justifyContent: "center",
-      }}
-    >
-      {equipo.map((member) => (
-        <div
-          key={member.name}
-          style={{
-            background: "#f5f5f5",
-            borderRadius: "12px",
-            boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
-            padding: "1.5rem",
-            width: "220px",
-            textAlign: "center",
-          }}
-        >
-          <img
-            src={member.img}
-            alt={member.name}
+const About = () => {
+  const { equipo } = useEquipo();
+  // console.log('Datos que llegan al componente:', equipo);
+  // if (loading) return <p>Cargando equipo...</p>;
+  // if (error) return <p>Error: {error}</p>;
+  return (
+    <div className="textalign">
+      <h1 >Sobre nuestro equipo</h1>
+      <br />
+      <div
+        style={{
+          display: "flex",
+          gap: "2rem",
+          flexWrap: "wrap",
+          justifyContent: "space-evenly",
+        }}
+      >
+        {equipo.map((member) => (
+          <div
+            key={member.nombre}
             style={{
-              width: "100px",
-              height: "100px",
-              borderRadius: "50%",
-              objectFit: "cover",
-              marginBottom: "1rem",
+              width: "360px",
+              textAlign: "center",
             }}
-          />
-          <h3>{member.name}</h3>
-          <p style={{ fontSize: "0.95rem", color: "#444" }}>{member.desc}</p>
-        </div>
-      ))}
+            className="card"
+          >
+            <img
+              src={member.imagen}
+              alt={"Foto de perfil de " + member.nombre}
+              style={{
+                width: "200px",
+                height: "200px",
+                borderRadius: "50%",
+                objectFit: "cover",
+                marginBottom: "1rem",
+              }}
+            />
+            <h3>{member.nombre}</h3>
+            <p style={{ fontSize: "0.95rem", color: "" }}>
+              {member.descripción}
+            </p>
+            <div className="contmini-icono">
+              <a href={member.Github}>
+                <img
+                  src="../public/github.png"
+                  alt="Logo de Github"
+                  style={{ height: "30px" }}
+                />
+              </a>
+              <a href={member.Linkedin}>
+                <img
+                  src="../public/linkedin.png"
+                  alt="Logo de Linkedin"
+                  style={{ height: "30px" }}
+                />
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+      <ul style={{ marginTop: "3rem", listStyle: "none", padding: 0 }}>
+        <li style={{ marginBottom: "1.5rem" }}>
+          <h3>🚀 Misión</h3>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime
+            nihil architecto qui nam blanditiis fugit quam velit tempora
+            inventore magnam exercitationem ipsum mollitia, ullam quas vel
+            maiores neque perferendis nobis.
+          </p>
+        </li>
+        <li style={{ marginBottom: "1.5rem" }}>
+          <h3>🔭 Visión</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae quod
+            quidem unde eius aliquid! Pariatur libero eius sed, maxime
+            aspernatur, ipsum deserunt ut sapiente magni at quia totam
+            perferendis atque.
+          </p>
+        </li>
+        <li>
+          <h3>💖 Valores</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
+            voluptate deleniti, quo facere perferendis dolores hic ipsa libero
+            distinctio nam soluta reprehenderit et maxime, consequuntur
+            exercitationem esse quod impedit consectetur?
+          </p>
+        </li>
+      </ul>
     </div>
-    <ul style={{ marginTop: "2rem" }}>
-      <li>
-        <h3>Misión</h3>
-      <p>En KOMUNI queremos facilitar </p> 
-      </li>
-      <li>
-        <h3>Visión</h3>
-      </li>
-      <li>
-        <h3>Valores</h3>
-      </li>
-    </ul>
-  </div>
-);
+  );
+};
 
 export default About;

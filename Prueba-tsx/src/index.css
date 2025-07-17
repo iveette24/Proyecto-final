@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --turquesa-medio: #2aa198;
   --turquesa-oscuro: #20706e;
   --turquesa-claro: #3ecfcf;
@@ -11,7 +11,7 @@
   --radius: 12px;
   --sombra: 0 4px 24px rgba(0,0,0,0.08);
   --header-height: 70px;
-}
+} */
 
 body {
   margin: 0;
