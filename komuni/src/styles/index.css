@@ -13,7 +13,6 @@
   --header-height: 70px;
 }
 
-/* Fondo general con degradado */
 body {
   margin: 0;
   padding: 0;
@@ -24,7 +23,6 @@ body {
   letter-spacing: 0.01em;
 }
 
-/* Cabecera sticky y con sombra */
 header {
   position: sticky;
   top: 0;

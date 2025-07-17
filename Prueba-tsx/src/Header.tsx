@@ -18,18 +18,6 @@ function Header() {
         className={` rk-header${scrolled ? " rk-header--scrolled" : ""}`}
         style={{ padding: 1 }}
       >
-        <input type="checkbox" id="mobile-menu" className="rk-mobile-menu" />
-        <label htmlFor="mobile-menu">
-          <svg>
-            <use xlinkHref="assets/img/symbols.svg#bar"></use>
-          </svg>
-          <svg>
-            <use xlinkHref="assets/img/symbols.svg#bar"></use>
-          </svg>
-          <svg>
-            <use xlinkHref="assets/img/symbols.svg#bar"></use>
-          </svg>
-        </label>
         <div className="ae-container-fluid rk-topbar">
           <h1 className="rk-logo">
             <Link to="/">
