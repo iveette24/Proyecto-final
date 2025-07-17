@@ -1,5 +1,5 @@
 import { useState, useEffect, type ChangeEvent, type FormEvent } from 'react';
-import { sendReporte } from '../services/api.ts'; // Asegúrate de que 'api.ts' maneje las llamadas correctamente
+import { sendReporte } from '../services/api.ts'; 
 
 // Definición de la interfaz para el payload del reporte
 interface ReportPayload {
