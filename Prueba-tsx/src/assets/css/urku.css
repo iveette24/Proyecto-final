@@ -62,23 +62,11 @@ body {
 }
 
 .rk-topbar {
-  -webkit-box-align: start;
-  -webkit-align-items: flex-start;
-  -ms-flex-align: start;
-          align-items: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display:         flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding-bottom: 3.3rem;
-  padding-top: 2.8rem;
+  display: flex;
+  align-items: center !important;
+  justify-content: flex-start; /* or space-between if you have nav */
+  min-height: 100px; /* Should match or exceed .logo-komuni height */
+  padding: 0 1rem;
 }
 @media (min-width: 64em) {
   .rk-topbar {
@@ -87,16 +75,15 @@ body {
 }
 
 .rk-logo {
-  -webkit-box-flex: 0;
-  -webkit-flex: 0 0 100%;
-      -ms-flex: 0 0 100%;
-          flex: 0 0 100%;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  width: auto;
   font-size: 1.375rem;
   font-weight: 700;
   letter-spacing: 2.25px;
   text-align: center;
   text-transform: uppercase;
-  width: 20%;
 }
 .rk-logo sup {
   font-size: .5625rem;
@@ -2177,17 +2164,37 @@ body {
 .rk-header {
   background: #2aa198 !important;
   color: #fff;
-  padding: 2rem 0 1rem 0;
+  padding: 0.75rem 0 0.5rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-bottom-left-radius: 24px;
   border-bottom-right-radius: 24px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);}
-
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  position: sticky !important;
+  top: 0;
+  z-index: 100;
+}
+.rk-header--scrolled {
+  padding: 0.3rem 0 0.2rem 0 !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+.rk-header--scrolled .rk-logo {
+  font-size: 1rem;
+}
+.rk-header--scrolled .rk-menu__link {
+  padding-bottom: 2rem;
+  font-size: 0.9rem;
+}
   .rk-menu__link:hover,
 .rk-footer-menu .rk-menu__link:hover {
   color: #ff9800; /* Example: orange highlight */
   text-decoration: underline; /* Optional: underline on hover */
   transition: color 0.2s;
+}
+.logo-komuni {
+  display: block;
+  height: 100px; /* Adjust as needed */
+  width: auto;
+  
 }
