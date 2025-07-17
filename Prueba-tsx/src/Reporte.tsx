@@ -1,5 +1,5 @@
 import { useState, useEffect, type ChangeEvent, type FormEvent } from 'react';
-import { sendReporte } from '../services/api'; // Asegúrate de que 'api.ts' maneje las llamadas correctamente
+import { sendReporte } from '../services/api.ts'; // Asegúrate de que 'api.ts' maneje las llamadas correctamente
 
 // Definición de la interfaz para el payload del reporte
 interface ReportPayload {
@@ -17,7 +17,7 @@ function generateId(): string {
   return Math.random().toString(16).slice(2, 6);
 }
 
-export default function ReportPage(): JSX.Element {
+export default function ReportPage() {
   const [calle, setCalle] = useState<string>('');
   const [desc, setDesc] = useState<string>('');
   const [extra, setExtra] = useState<string>('');
@@ -60,7 +60,7 @@ export default function ReportPage(): JSX.Element {
           const nombreCalle = await getStreetName(latitud, longitud);
           if (nombreCalle) setCalle(nombreCalle);
         },
-        (err: GeolocationPositionError) => setMsg('⚠️ No se pudo obtener ubicación automáticamente')
+        (err: GeolocationPositionError) => setMsg('⚠️ No se pudo obtener ubicación automáticamente' + err)
       );
     } else {
       setMsg('⚠️ Geolocalización no soportada por el navegador.');

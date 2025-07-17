@@ -1,20 +1,24 @@
-const team = [
-  {
-    name: "David",
-    img: "src/assets/img/pato2.jpg", // Pon la ruta correcta de la imagen
-    desc: "Frontend developer passionate about UI/UX and accessibility.",
-  },
-  {
-    name: "Ivette",
-    img: "src/assets/img/pato2.jpg",
-    desc: "Backend specialist focused on scalable and secure APIs.",
-  },
-  {
-    name: "Marc",
-    img: "src/assets/img/pato2.jpg",
-    desc: "Fullstack developer and DevOps enthusiast.",
-  },
-];
+import useEquipo from "./UseEquipo";
+
+
+
+// const team = [
+//   {
+//     name: "David",
+//     img: "src/assets/img/pato2.jpg", // Pon la ruta correcta de la imagen
+//     desc: "Frontend developer passionate about UI/UX and accessibility.",
+//   },
+//   {
+//     name: "Ivette",
+//     img: "src/assets/img/pato2.jpg",
+//     desc: "Backend specialist focused on scalable and secure APIs.",
+//   },
+//   {
+//     name: "Marc",
+//     img: "src/assets/img/pato2.jpg",
+//     desc: "Fullstack developer and DevOps enthusiast.",
+//   },
+// ];
 
 const About = () => (
   <div style={{ padding: "2rem" }}>
@@ -27,7 +31,7 @@ const About = () => (
         justifyContent: "center",
       }}
     >
-      {team.map((member) => (
+      {equipo.map((member) => (
         <div
           key={member.name}
           style={{
