@@ -76,10 +76,10 @@ a:hover {
   color: var(--turquesa-claro);
 }
 
-a:focus, button:focus, input:focus, textarea:focus, select:focus {
+/* a:focus, button:focus, input:focus, textarea:focus, select:focus {
   outline: 2px solid var(--turquesa-claro);
   outline-offset: 2px;
-}
+} */
 
 section {
   padding: 0;
