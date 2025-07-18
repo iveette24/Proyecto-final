@@ -255,7 +255,7 @@ export default function Mapa() {
     }).addTo(map);
 
     getReportes()
-      .then((res: { data: Reporte[] }) => setReportes(res.data))
+      .then((res: { data: AxiosResponse<Reporte[]> }) => setReportes(res.data))
       .catch((error: any) => console.error("Error loading reports:", error))
       .finally(() => setLoading(false));
 
