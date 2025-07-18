@@ -19,7 +19,7 @@ export const useEquipo = () => {
     // Definimos una función asíncrona dentro del useEffect para poder usar async/await.
     const fetchData = async () => {
       try {
-        const response = await fetch('https://komuni-app-default-rtdb.europe-west1.firebasedatabase.app/perfiles.json');
+        const response = await fetch('https://komuni-app-default-rtdb.europe-west1.firebasedatabase.app/admins.json');
         
         if (!response.ok) {
           throw new Error('Error al conectar con la base de datos.');
