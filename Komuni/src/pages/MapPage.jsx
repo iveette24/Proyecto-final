@@ -254,14 +254,24 @@ export default function MapPage() {
       let imagenHtml = "";
       if (rep.imagen) {
         let imgSrc = rep.imagen;
-        if (rep.imagen.startsWith("data:image/")) {
-          imgSrc = rep.imagen;
-        } else if (rep.imagen.startsWith("http")) {
-          imgSrc = rep.imagen;
+        // Mostrar correctamente imágenes base64 y rutas relativas
+        if (typeof imgSrc === "string" && imgSrc.startsWith("data:image/")) {
+          // Imagen base64
+          // no change
+        } else if (typeof imgSrc === "string" && (imgSrc.startsWith("http://") || imgSrc.startsWith("https://"))) {
+          // Imagen absoluta
+          // no change
+        } else if (typeof imgSrc === "string" && imgSrc.length > 0) {
+          // Imagen subida como archivo (nombre), buscar en /uploads o /public/icons
+          imgSrc = `/uploads/${imgSrc}`;
         } else {
-          imgSrc = `/uploads/${rep.imagen}`;
+          imgSrc = null;
         }
-        imagenHtml = `<div style="margin:6px 0; text-align:center;"><img src='${imgSrc}' alt="Imagen de la incidencia" style="max-width:100%;max-height:60px;border-radius:6px;box-shadow:0 1px 4px #0002;object-fit:contain;background:#eee;display:block;margin:0 auto;" /></div>`;
+        if (imgSrc) {
+          imagenHtml = `<div style="margin:6px 0; text-align:center;">
+            <img src="${imgSrc}" alt="Imagen de la incidencia" style="max-width:100%;max-height:60px;border-radius:6px;box-shadow:0 1px 4px #0002;object-fit:contain;background:#eee;display:block;margin:0 auto;" />
+          </div>`;
+        }
       }
 
       const comentarios = Array.isArray(rep.comentarios) ? rep.comentarios : [];
