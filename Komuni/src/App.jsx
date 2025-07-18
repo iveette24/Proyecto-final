@@ -5,6 +5,7 @@ import Header from './components/Header';
 import HomePage from './pages/HomePage';
 import MapPage from './pages/MapPage';
 import EduPage from './pages/EduPage';
+import ContactPage from './pages/ContactPage';
 
 function NotFound() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/mapa" element={<MapPage />} />
           <Route path="/educacion" element={<EduPage />} />
+          <Route path="/contacto" element={<ContactPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

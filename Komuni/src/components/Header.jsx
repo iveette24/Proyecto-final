@@ -32,6 +32,7 @@ export default function Header() {
           <NavLink to="/" label="Inicio" active={pathname === "/"} />
           <NavLink to="/mapa" label="Mapa" active={pathname === "/mapa"} />
           <NavLink to="/educacion" label="Educación" active={pathname === "/educacion"} />
+          <NavLink to="/contacto" label="Contacto" active={pathname === "/contacto"} />
         </nav>
       </div>
     </header>
