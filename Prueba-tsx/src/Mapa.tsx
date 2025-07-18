@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, useCallback, type ChangeEvent, type FormEvent } from "react";
-import L, { Map, Marker, CircleMarker, Icon, PopupOptions } from "leaflet";
+import L, { Map, Marker, CircleMarker, Icon } from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { sendReporte, getReportes } from "../services/api"; // Asegúrate de que 'api.ts' maneje las llamadas correctamente
+import { sendReporte, getReportes } from "../services/api.ts"; // Asegúrate de que 'api.ts' maneje las llamadas correctamente
 import axios from "axios";
 
 // Interfaz para un reporte
@@ -90,7 +90,7 @@ async function getStreetName(lat: number, lng: number): Promise<string> {
   }
 }
 
-export default function MapPage(): JSX.Element {
+export default function Mapa() {
   const mapRef = useRef<Map | null>(null);
   const markersRef = useRef<Marker[]>([]);
   const [reportes, setReportes] = useState<Reporte[]>([]);
@@ -272,103 +272,106 @@ export default function MapPage(): JSX.Element {
     markersRef.current.forEach(m => mapRef.current?.removeLayer(m));
     markersRef.current = [];
 
-    reportes.forEach(rep => {
-      if (!rep.latitud || !rep.longitud) return;
-      const icono = getIconByDificultad(rep.dificultad || "media");
-      const emoji = getEmojiByDificultad(rep.dificultad || "media");
-      const incidenciaEmoji = getIncidenciaEmoji(rep.descripción || "");
-      let imagenHtml = "";
-      if (rep.imagen) {
-        let imgSrc = rep.imagen;
-        if (rep.imagen.startsWith("data:image/")) {
-          imgSrc = rep.imagen;
-        } else if (rep.imagen.startsWith("http")) {
-          imgSrc = rep.imagen;
-        } else {
-          imgSrc = `/uploads/${rep.imagen}`;
-        }
-        imagenHtml = `<div style="margin:6px 0; text-align:center;"><img src='${imgSrc}' alt="Imagen de la incidencia" style="max-width:100%;max-height:60px;border-radius:6px;box-shadow:0 1px 4px #0002;object-fit:contain;background:#eee;display:block;margin:0 auto;" /></div>`;
+reportes.forEach(rep => {
+  if (!rep.latitud || !rep.longitud) return;
+
+  if (mapRef.current) { 
+    const icono = getIconByDificultad(rep.dificultad || "media");
+    const emoji = getEmojiByDificultad(rep.dificultad || "media");
+    const incidenciaEmoji = getIncidenciaEmoji(rep.descripción || "");
+    let imagenHtml = "";
+    if (rep.imagen) {
+      let imgSrc = rep.imagen;
+      if (rep.imagen.startsWith("data:image/")) {
+        imgSrc = rep.imagen;
+      } else if (rep.imagen.startsWith("http")) {
+        imgSrc = rep.imagen;
+      } else {
+        imgSrc = `/uploads/${rep.imagen}`;
       }
+      imagenHtml = `<div style="margin:6px 0; text-align:center;"><img src='${imgSrc}' alt="Imagen de la incidencia" style="max-width:100%;max-height:60px;border-radius:6px;box-shadow:0 1px 4px #0002;object-fit:contain;background:#eee;display:block;margin:0 auto;" /></div>`;
+    }
 
-      const comentarios = Array.isArray(rep.comentarios) ? rep.comentarios : [];
-      const popupId = `popup-${rep.id}`;
-      const popupHtml = `
-        <div style="position:relative;width:auto;max-width:98vw;min-width:140px;min-height:80px;padding-bottom:8px;">
-          <button id="${popupId}-close" style="position:absolute;top:2px;right:2px;background:none;border:none;font-size:1rem;cursor:pointer;color:#888;">❌</button>
-          <div style="font-size:1.1rem;line-height:1.1;margin-bottom:0.15em;">
-            ${emoji} ${incidenciaEmoji}
-          </div>
-          <strong style="font-size:0.98rem;">${rep.calle || "Ubicación sin calle"}</strong><br/>
-          <span style="font-size:0.91rem;">
-            📝 ${rep.descripción}<br/>
-            Nivel: ${rep.dificultad?.toUpperCase() || "MEDIA"}<br/>
-            ${rep.informaciónExtra ? "📌 " + rep.informaciónExtra + "<br/>" : ""}
-            ${imagenHtml}
-          </span>
-          <hr style="margin:0.3em 0"/>
-          <div id="${popupId}-comentarios" style="font-size:0.88em;">
-            <strong>Comentarios:</strong>
-            <ul style="padding-left:1em;margin:0;">
-              ${comentarios.map(c => `<li>${c}</li>`).join("") || "<li style='color:#888'>Sin comentarios</li>"}
-            </ul>
-          </div>
-          <form id="${popupId}-form" style="margin-top:0.2em;display:flex;gap:0.2em;">
-            <input type="text" name="comentario" placeholder="Agregar comentario..." style="flex:1;padding:0.15em;border-radius:5px;border:1px solid #ccc;font-size:0.88em;" />
-            <button type="submit" style="padding:0.15em 0.5em;border-radius:5px;background:#2aa198;color:#fff;border:none;cursor:pointer;">Enviar</button>
-          </form>
-          <div style="margin-top:0.3em;display:flex;gap:0.3em;">
-            <button id="${popupId}-edit" style="padding:0.15em 0.5em;border-radius:5px;background:#ffb300;color:#fff;border:none;cursor:pointer;">Editar</button>
-            <button id="${popupId}-delete" style="padding:0.15em 0.5em;border-radius:5px;background:#e53935;color:#fff;border:none;cursor:pointer;">Borrar</button>
-          </div>
+    const comentarios = Array.isArray(rep.comentarios) ? rep.comentarios : [];
+    const popupId = `popup-${rep.id}`;
+    const popupHtml = `
+      <div style="position:relative;width:auto;max-width:98vw;min-width:140px;min-height:80px;padding-bottom:8px;">
+        <button id="${popupId}-close" style="position:absolute;top:2px;right:2px;background:none;border:none;font-size:1rem;cursor:pointer;color:#888;">❌</button>
+        <div style="font-size:1.1rem;line-height:1.1;margin-bottom:0.15em;">
+          ${emoji} ${incidenciaEmoji}
         </div>
-      `;
+        <strong style="font-size:0.98rem;">${rep.calle || "Ubicación sin calle"}</strong><br/>
+        <span style="font-size:0.91rem;">
+          📝 ${rep.descripción}<br/>
+          Nivel: ${rep.dificultad?.toUpperCase() || "MEDIA"}<br/>
+          ${rep.informaciónExtra ? "📌 " + rep.informaciónExtra + "<br/>" : ""}
+          ${imagenHtml}
+        </span>
+        <hr style="margin:0.3em 0"/>
+        <div id="${popupId}-comentarios" style="font-size:0.88em;">
+          <strong>Comentarios:</strong>
+          <ul style="padding-left:1em;margin:0;">
+            ${comentarios.map(c => `<li>${c}</li>`).join("") || "<li style='color:#888'>Sin comentarios</li>"}
+          </ul>
+        </div>
+        <form id="${popupId}-form" style="margin-top:0.2em;display:flex;gap:0.2em;">
+          <input type="text" name="comentario" placeholder="Agregar comentario..." style="flex:1;padding:0.15em;border-radius:5px;border:1px solid #ccc;font-size:0.88em;" />
+          <button type="submit" style="padding:0.15em 0.5em;border-radius:5px;background:#2aa198;color:#fff;border:none;cursor:pointer;">Enviar</button>
+        </form>
+        <div style="margin-top:0.3em;display:flex;gap:0.3em;">
+          <button id="${popupId}-edit" style="padding:0.15em 0.5em;border-radius:5px;background:#ffb300;color:#fff;border:none;cursor:pointer;">Editar</button>
+          <button id="${popupId}-delete" style="padding:0.15em 0.5em;border-radius:5px;background:#e53935;color:#fff;border:none;cursor:pointer;">Borrar</button>
+        </div>
+      </div>
+    `;
 
-      const marker = L.marker([rep.latitud, rep.longitud], { icon: icono })
-        .addTo(mapRef.current)
-        .bindPopup(popupHtml, { maxWidth: 400, minWidth: 140, closeButton: false } as PopupOptions);
+    const marker = L.marker([rep.latitud, rep.longitud], { icon: icono })
+      .addTo(mapRef.current) 
+      .bindPopup(popupHtml, { maxWidth: 400, minWidth: 140, closeButton: false } as L.PopupOptions);
 
-      marker.on("popupopen", () => {
-        const closeBtn = document.getElementById(`${popupId}-close`);
-        if (closeBtn) {
-          closeBtn.onclick = () => {
+    marker.on("popupopen", () => {
+      const closeBtn = document.getElementById(`${popupId}-close`);
+      if (closeBtn) {
+        closeBtn.onclick = () => {
+          mapRef.current?.closePopup();
+        };
+      }
+      const editBtn = document.getElementById(`${popupId}-edit`);
+      if (editBtn) {
+        editBtn.onclick = () => {
+          mapRef.current?.closePopup();
+          openEditSidebar(rep);
+        };
+      }
+      const form = document.getElementById(`${popupId}-form`) as HTMLFormElement;
+      if (form) {
+        form.onsubmit = async evt => {
+          evt.preventDefault();
+          const input = form.comentario as HTMLInputElement;
+          const comentario = input.value.trim();
+          if (!comentario) return;
+          const nuevosComentarios = [...(rep.comentarios || []), comentario];
+          await updateReporte(rep.id, { comentarios: nuevosComentarios });
+          input.value = "";
+        };
+      }
+      const delBtn = document.getElementById(`${popupId}-delete`);
+      if (delBtn) {
+        delBtn.onclick = async () => {
+          if (window.confirm("¿Seguro que quieres borrar este reporte?")) {
+            await deleteReporte(rep.id);
             mapRef.current?.closePopup();
-          };
-        }
-        const editBtn = document.getElementById(`${popupId}-edit`);
-        if (editBtn) {
-          editBtn.onclick = () => {
-            mapRef.current?.closePopup();
-            openEditSidebar(rep);
-          };
-        }
-        const form = document.getElementById(`${popupId}-form`) as HTMLFormElement;
-        if (form) {
-          form.onsubmit = async evt => {
-            evt.preventDefault();
-            const input = form.comentario as HTMLInputElement;
-            const comentario = input.value.trim();
-            if (!comentario) return;
-            const nuevosComentarios = [...(rep.comentarios || []), comentario];
-            await updateReporte(rep.id, { comentarios: nuevosComentarios });
-            input.value = "";
-          };
-        }
-        const delBtn = document.getElementById(`${popupId}-delete`);
-        if (delBtn) {
-          delBtn.onclick = async () => {
-            if (window.confirm("¿Seguro que quieres borrar este reporte?")) {
-              await deleteReporte(rep.id);
-              mapRef.current?.closePopup();
-            }
-          };
-        }
-      });
-
-      markersRef.current.push(marker);
+          }
+        };
+      }
     });
+
+    markersRef.current.push(marker);
+  }
+});
   }, [reportes, updateReporte, deleteReporte, openEditSidebar]);
 
-  function ReportSidebar(): JSX.Element {
+  function ReportSidebar() {
     const editando = sidebar.modo === "editar";
     const rep = sidebar.reporte;
     const [tipo, setTipo] = useState<Reporte['tipo']>(editando ? rep?.tipo || "escalera" : "escalera");
@@ -509,7 +512,8 @@ export default function MapPage(): JSX.Element {
 
   return (
     <section>
-      <h2>Mapa de accesibilidad</h2>
+      <div className="textalign">
+      <h1>Mapa de accesibilidad</h1>
       <div
         className="card"
         style={{
@@ -521,7 +525,7 @@ export default function MapPage(): JSX.Element {
           color: "#20706e"
         }}
       >
-        <strong>Guía de usuario:</strong>
+        <strong >Guía de usuario:</strong>
         <ul style={{ margin: "0.7em 0 0 1.2em", padding: 0 }}>
           <li>🔍 Usa el buscador para localizar una dirección o ciudad.</li>
           <li>📍 Pulsa "Mi ubicación" para centrar el mapa donde estás.</li>
@@ -566,7 +570,7 @@ export default function MapPage(): JSX.Element {
           📍 Mi ubicación
         </button>
       </div>
-      {loading && <p style={{ color: '#888' }}>Cargando reportes...</p>}
+      {loading && <p style={{ color: '#888' }}>Cargando reportes...</p>}</div>
       <div style={{ position: "relative" }}>
         <div id="map" style={{ height: "60vh", borderRadius: 10, overflow: "hidden" }} aria-label="Mapa de reportes" />
         {sidebar.open && <ReportSidebar />}

@@ -15,67 +15,67 @@ function Header() {
   return (
     <>
       <div
-        className={` rk-header${scrolled ? " rk-header--scrolled" : ""}`}
+        className={` header${scrolled ? " header--scrolled" : ""}`}
         style={{ padding: 1 }}
       >
-        <div className="ae-container-fluid rk-topbar">
-          <h1 className="rk-logo">
+        <div className="topbar">
+          <h1 className="logo">
             <Link to="/">
               <img
                 className="logo-komuni"
-                src="src/assets/img/Komuni2.png"
+                src="../public/icons/barrier-icon.png"
                 alt="Logo de KOMUNI, con una imagen de una chincheta de mapa con una silla de ruedas en azul."
               />
             </Link>
           </h1>
-          <nav className="rk-navigation">
-            <ul className="rk-menu">
-              <li className="rk-menu__item">
+          <nav className="navi">
+            <ul className="menu">
+              <li className="menu_item">
                 <NavLink
                   to="/"
                   end
                   className={({ isActive }: { isActive: boolean }) =>
-                    "rk-menu__link" + (isActive ? " active" : "")
+                    "menu_link" + (isActive ? " active" : "")
                   }
                 >
                   Home
                 </NavLink>
               </li>
-              <li className="rk-menu__item">
+              <li className="menu_item">
                 <NavLink
                   to="/about"
                   className={({ isActive }: { isActive: boolean }) =>
-                    "rk-menu__link" + (isActive ? " active" : "")
+                    "menu_link" + (isActive ? " active" : "")
                   }
                 >
                   Sobre nosotros
                 </NavLink>
               </li>
-              <li className="rk-menu__item">
+              <li className="menu_item">
                 <NavLink
                   to="/mapa"
                   className={({ isActive }: { isActive: boolean }) =>
-                    "rk-menu__link" + (isActive ? " active" : "")
+                    "menu_link" + (isActive ? " active" : "")
                   }
                 >
                   Mapa
                 </NavLink>
               </li>
-              <li className="rk-menu__item">
+              <li className="menu_item">
                 <NavLink
                   to="/foro"
                   className={({ isActive }: { isActive: boolean }) =>
-                    "rk-menu__link" + (isActive ? " active" : "")
+                    "menu_link" + (isActive ? " active" : "")
                   }
                 >
-                  Foro
+                  ???
                 </NavLink>
               </li>
-              <li className="rk-menu__item">
+              <li className="menu_item">
                 <NavLink
                   to="/contacto"
                   className={({ isActive }: { isActive: boolean }) =>
-                    "rk-menu__link" + (isActive ? " active" : "")
+                    "menu_link" + (isActive ? " active" : "")
                   }
                 >
                   Contacto

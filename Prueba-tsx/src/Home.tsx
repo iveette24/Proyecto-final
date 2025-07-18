@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <section style={{ padding: '1rem' }}>
+    <section className="textalign">
       <h1>Bienvenido a Komuni</h1>
       <p style={{ fontSize: '1.2rem', color: '#20706e', marginBottom: 32 }}>
         Plataforma global para reportar barreras urbanas, mejorar la accesibilidad y construir una comunidad más inclusiva.
