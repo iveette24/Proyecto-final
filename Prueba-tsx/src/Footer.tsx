@@ -19,12 +19,12 @@ function Footer() {
             </li>
             <li className="menu_item">
                <NavLink
-                  to="/privacidad"
+                  to="/about"
                   className={({ isActive }: { isActive: boolean }) =>
                     "menu_link" + (isActive ? " active" : "")
                   }
                 >
-                  Política de privacidad
+                  Sobre KOMUNI
                 </NavLink>
             </li>
             <li className="menu_item">

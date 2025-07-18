@@ -1,4 +1,5 @@
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
+import type { AxiosResponse, AxiosError } from 'axios';
 
 // Definición de la interfaz para el payload de un nuevo reporte
 // `id` es opcional aquí si lo generas en el frontend o backend
