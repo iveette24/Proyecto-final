@@ -21,7 +21,7 @@ const About = () => {
           <div
             key={member.nombre}
             style={{
-              width: "360px",
+              width: "300px",
               textAlign: "center",
             }}
             className="card"
