@@ -64,28 +64,19 @@ const About = () => {
         <li style={{ marginBottom: "1.5rem" }}>
           <h3>🚀 Misión</h3>
           <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime
-            nihil architecto qui nam blanditiis fugit quam velit tempora
-            inventore magnam exercitationem ipsum mollitia, ullam quas vel
-            maiores neque perferendis nobis.
+            Crear una comunidad digital colaborativa que visibilice, reporte y mejore los espacios públicos para personas con discapacidad o movilidad reducida, facilitando el acceso a información útil, precisa y actualizada sobre zonas accesibles en tiempo real.
           </p>
         </li>
         <li style={{ marginBottom: "1.5rem" }}>
           <h3>🔭 Visión</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae quod
-            quidem unde eius aliquid! Pariatur libero eius sed, maxime
-            aspernatur, ipsum deserunt ut sapiente magni at quia totam
-            perferendis atque.
+            Ser la plataforma líder en accesibilidad urbana, donde usuarios, entidades públicas y organizaciones trabajen juntos para construir ciudades más inclusivas, seguras y adaptadas para todos, sin importar sus capacidades físicas.
           </p>
         </li>
         <li>
           <h3>💖 Valores</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
-            voluptate deleniti, quo facere perferendis dolores hic ipsa libero
-            distinctio nam soluta reprehenderit et maxime, consequuntur
-            exercitationem esse quod impedit consectetur?
+           Compromiso con la inclusión, respeto por la diversidad, colaboración entre ciudadanos y transparencia en la información. En KOMUNI creemos que el acceso equitativo al espacio público es un derecho, no un privilegio.
           </p>
         </li>
       </ul>
