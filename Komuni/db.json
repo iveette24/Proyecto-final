@@ -13,24 +13,12 @@
       "tipo": "escalera"
     },
     {
-      "id": "184d",
-      "calle": "Rambla Nova",
-      "descripción": "Hay un bache",
-      "informaciónExtra": "",
-      "tipo": "bache",
-      "dificultad": "media",
-      "imagen": null,
-      "latitud": 41.11570887968938,
-      "longitud": 1.2519264221191408,
-      "fecha": "2025-07-16T08:07:55.024Z"
-    },
-    {
       "id": "6448",
       "calle": "Carrer Tres",
       "descripción": "gaerfae",
       "informaciónExtra": "",
       "tipo": "rampa",
-      "dificultad": "alta",
+      "dificultad": "media",
       "imagen": null,
       "latitud": 41.11689198982801,
       "longitud": 1.193046569824219,
@@ -62,6 +50,42 @@
       "comentarios": [
         "Una polla"
       ]
+    },
+    {
+      "id": "0dce",
+      "calle": "Carrer del Túria",
+      "descripción": "etgvtv",
+      "informaciónExtra": "",
+      "tipo": "bache",
+      "dificultad": "baja",
+      "imagen": null,
+      "latitud": 41.11467413035984,
+      "longitud": 1.2177094817161562,
+      "fecha": "2025-07-17T12:13:51.899Z"
+    },
+    {
+      "id": "78b1",
+      "calle": "Carrer del Túria",
+      "descripción": "thrjyttmyhyu,ku",
+      "informaciónExtra": "",
+      "tipo": "acera",
+      "dificultad": "media",
+      "imagen": null,
+      "latitud": 41.11461290839685,
+      "longitud": 1.2175083160400393,
+      "fecha": "2025-07-17T13:50:03.262Z"
+    },
+    {
+      "id": "a12a",
+      "calle": "Carrer Adrià",
+      "descripción": "yj56iliyujtjtuju",
+      "informaciónExtra": "",
+      "tipo": "obstaculo",
+      "dificultad": "alta",
+      "imagen": null,
+      "latitud": 41.11424575674205,
+      "longitud": 1.2537851929664614,
+      "fecha": "2025-07-17T13:51:00.015Z"
     }
   ]
 }
