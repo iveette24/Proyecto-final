@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { AxiosResponse, AxiosError } from 'axios';
+import type { AxiosResponse } from 'axios';
 
 interface ReportPayload {
   id?: string; 
