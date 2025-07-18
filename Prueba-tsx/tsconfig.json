@@ -7,16 +7,15 @@
 
 
   "compilerOptions": {
-    // ... other existing options
 
-    "jsx": "react-jsx", // Or "react" if you are using an older React version or a different JSX transform
-    "lib": ["dom", "es2017"], // Ensure 'dom' is included, and add 'es2017' or newer for modern JS features
-    "moduleResolution": "node", // Common for Node.js environments and bundling
-    "esModuleInterop": true, // Recommended for better interoperability with CommonJS modules
-    "allowSyntheticDefaultImports": true, // Allows default imports from modules with no default export (e.g., 'import React from "react";')
-    "target": "es2017", // Or a newer ECMAScript version compatible with your environment
-    "skipLibCheck": true, // Optional: Skips type checking of all declaration files (*.d.ts). Can speed up compilation.
-    "forceConsistentCasingInFileNames": true, // Ensures consistent casing in file names, preventing issues on case-insensitive file systems.
-    "resolveJsonModule": true // Required if you are importing .json files directly
+    "jsx": "react-jsx", 
+    "lib": ["dom", "es2017"], 
+    "moduleResolution": "node", 
+    "esModuleInterop": true, 
+    "allowSyntheticDefaultImports": true, 
+    "target": "es2017", 
+    "skipLibCheck": true, 
+    "forceConsistentCasingInFileNames": true, 
+    "resolveJsonModule": true 
   }
 }
